@@ -1,0 +1,102 @@
+#calendar {
+   border: 1px solid green;
+   display: flex;
+   flex-direction: column;
+   padding: 20px;
+ }
+#navigator {
+    border: 1px dashed lightBlue; 
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: stretch;
+   padding: 20px;
+ }
+
+#leftArrow, #rightArrow{
+   border: 1px solid black;
+   display: flex;
+   flex-direction: column;
+   
+   
+   padding: 20px;
+ }
+
+#сurrentMonth {
+   border: 1px solid black;
+   display: flex;
+   flex-basis: 100%;
+   justify-content: center;
+   padding: 20px;
+ }
+
+
+
+#daysOfWeek {
+   border: 1px dashed black;
+   display: flex;
+   justify-content: center;
+   align-items: center
+   padding: 20px;
+   flex-direction: row;
+  }
+
+#monday,#tuesday,#wednesday,#thursday,#friday,#saturday,#sunday{
+   border: 1px solid yellowgreen;
+   display: flex;
+   justify-content: center;
+   flex-basis: 100%;
+   padding: 20px;
+ }
+
+
+.daysGrid {
+    border: 1px dashed red;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.emptyDaysBlock{
+    border: 1px solid #FFFFFF;
+    display: flex;
+    /*flex-basis: 100%;*/
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.daysWeek {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.emptyDay{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.cutdaysWeek{
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day {
+    border: 1px solid black;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
