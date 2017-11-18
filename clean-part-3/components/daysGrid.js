@@ -9,116 +9,54 @@ let dgprt = DaysGrid.prototype
 dgprt.CLASS_NAME = "daysGrid";
 
 dgprt.render = function () {
-
-    //последний день месяца или его стоит определить в main.js???
-    //последний день в календаре - это последний день месяца, дальше - пустые элементы
     let lastDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0)
-    //первый день месяца:т.е какой-бы день к нам не пришел в startDate, календарь строим с первого числа! возвращает дату!!!!!
     let firstDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), 1)
-    //variableDate будем менять уже от стартовой даты до финишной в текущем месяце!
     let variableDate = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate())
-
-    //день недели последнего дня месяца
-    //последний понедельник месяца
-    //curentWeekCount
 
     let daysGridEl = document.createElement("div");
     daysGridEl.className = "daysGrid"
 
-    //определим здесь cutDaysCount, иначе как нам изменять изолированно variableDate...
-    // cutDaysCount - количество дней в укороченной неделе
-    let cutDaysCount
+    //потому что пока не знаю как иначе
+    //проверка: укороченная ли первая неделя-?!
+    let cutStartDaysCount
     if (firstDate.getDay() === 0) {
-        cutDaysCount = 1
+        cutStartDaysCount = 1
     }
     else if (firstDate.getDay() != 1) {
-        cutDaysCount = daysCount - firstDate.getDay() + 1
+        cutStartDaysCount = daysCount - firstDate.getDay() + 1
     }
     else {
-        cutDaysCount = 0
+        cutStartDaysCount = 0
     }
-    //поменяла i на еденицу, так понятнее вести счет недель!!!!!
+
+    //рисуем недели, начинаем с первой недели
     for (i = 1; i <= weekCount; i++) {
-        // если рисуем первую неделю и первый день не понедельник
-        if (i === 1 && firstDate.getDay() != 1) {
 
-            let cutDaysWeek = true
-            let daysWeekEl = new DaysWeek(variableDate, cutDaysWeek, daysCount, firstDate, lastDate).render()
+        // если рисуем первую неделю
+        if (i === 1) {
+
+            let firstWeek = true
+            // мысль: переименовать firstWeek в firstWeek так будет понятнее в контексте
+            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate).render()
             daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + cutDaysCount)
-        }
-        /*// если рисуем последнюю неделю
-        if (i === weekCount && lastDate.getMonth()<variableDate.getMonth()) {
-
-            let cutDaysWeek = true
-            let daysWeekEl = new DaysWeek(variableDate, cutDaysWeek, daysCount, firstDate, lastDate).render()
-            daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + cutDaysCount)
-
-        }*/
-
-
-        // если мы рисуем последнюю неделю
-        else if (i < weekCount && lastDate.getDate() - 6 >= variableDate.getDate()) {
-
-            let cutDaysWeek = false
-            let daysWeekEl = new DaysWeek(variableDate, cutDaysWeek, daysCount, firstDate, lastDate).render()
-            daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + 7)
+            variableDate.setDate(variableDate.getDate() + cutStartDaysCount)
         }
 
-        else if (lastDate.getMonth() < variableDate.getMonth()) {
-
-            let cutDaysWeek = true
-            let daysWeekEl = new DaysWeek(variableDate, cutDaysWeek, daysCount, firstDate, lastDate).render()
-            daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + 7)
-        }
-
-
+        // если мы рисуем рядовую полную неделю или последнюю неделю
         else {
-            let cutDaysWeek = true
-            let daysWeekEl = new DaysWeek(variableDate, cutDaysWeek, daysCount, firstDate, lastDate).render()
+
+            let firstWeek = false
+            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate).render()
             daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + cutDaysCount)
-
+            variableDate.setDate(variableDate.getDate() + daysCount)
         }
+
     }
-    //прописать укороченную неделю для последней недели месяца!!!*/
-
-
 
     return daysGridEl;
-
 }
 
 dgprt = null
 
 
 
-
-
-    /*let i
-    for (i = 0; i < weekCount; i++) {
-        //let variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())
-
-        // если мы имеем дело с первой неделей...
-        if (i === 0) {
-
-            //...то рисуем урезанную неделю...
-            let cutDaysWeekEl = new CutDaysWeek(variableDate).render()
-
-            // и рисуем пустые элементы!!!
-            var emptyel = new emptyDaysBlock(variableDate).render()
-            cutDaysWeekEl.insertBefore(emptyel, cutDaysWeekEl.firstChild)
-            daysGridEl.appendChild(cutDaysWeekEl)
-        
-        }
-        // иначе рисуем нормальную неделю!!!!
-        else {
-            
-            let daysWeekEl = new DaysWeek(variableDate).render()
-            daysGridEl.appendChild(daysWeekEl)
-        }
-     
-    }*/

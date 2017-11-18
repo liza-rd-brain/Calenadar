@@ -1,6 +1,6 @@
-function DaysWeek(startDate, cutDaysWeek, daysCount, firstDate, lastDate) {
+function DaysWeek(startDate, firstWeek, daysCount, firstDate, lastDate) {
     this.startDate = startDate
-    this.cutDaysWeek = cutDaysWeek
+    this.firstWeek = firstWeek
     this.daysCount = daysCount
     this.firstDate = firstDate
     this.lastDate = lastDate
@@ -11,87 +11,63 @@ let wprt = DaysWeek.prototype
 wprt.CLASS_NAME = "daysWeek"
 
 wprt.render = function () {
-
-    let firstDate = new Date(this.firstDate.getFullYear(), this.firstDate.getMonth(), this.firstDate.getDate())
+    let daysCount = this.daysCount
+    let firstDate = this.firstDate
     let variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())
     let daysWeekEl = document.createElement("div")
 
     daysWeekEl.className = "daysWeek"
 
-
-    if (this.cutDaysWeek === true) {
-        // cutDaysCount - количество дней в укороченной неделе
-        let cutDaysCount
-        //если имеем дело с воскресением
-        if (variableDate.getDay() === 0) {
-            cutDaysCount = 1
-
-            for (let i = 0; i < cutDaysCount; i++) {
-
-                let dayEl = new Day(variableDate).render()
-                variableDate.setDate(variableDate.getDate() + 1)
-
-                //variableDate = variableDate.setDate(variableDate.getDate() + 1)
-                daysWeekEl.appendChild(dayEl)
-            }
-            let emptyel = new emptyDaysBlock(firstDate).render()
-            daysWeekEl.insertBefore(emptyel, daysWeekEl.firstChild)
-        }
-
-        // или если имеем дело с непонедельником
-        else if (variableDate.getDay() != 1) {
-            cutDaysCount = daysCount - variableDate.getDay() + 1
-
-            for (let i = 0; i < cutDaysCount; i++) {
-
-                let dayEl = new Day(variableDate).render()
-                variableDate.setDate(variableDate.getDate() + 1)
-
-                //variableDate = new Date(variableDate.setDate(variableDate.getDate() + 1))
-                daysWeekEl.appendChild(dayEl)
-            }
-            let emptyel = new emptyDaysBlock(firstDate).render()
-            daysWeekEl.insertBefore(emptyel, daysWeekEl.firstChild)
-
-        }
-
-        // или имеем дело с понедельником - тоже строим обычную неделю
-        //понедельник с true в cutDaysWeek может быть только последняя короткая неделя!!!!
-        //здесь определили, что последняя короткая неделя рисуется до последнего дня!!!!!!!
-        else {
-            cutDaysCount = this.lastDate.getDay()
-            for (let i = 0; i < cutDaysCount; i++) {
-                cutDaysCount = this.lastDate.getDay()
-
-                let dayEl = new Day(variableDate).render()
-                variableDate.setDate(variableDate.getDate() + 1)
-                daysWeekEl.appendChild(dayEl)
-            }
-            let emptyel = new emptyDaysBlock(firstDate).render()
-            daysWeekEl.appendChild(emptyel)
-        }
-        //let emptyel = new emptyDaysBlock(firstDate).render()
-        //daysWeekEl.insertBefore(emptyel, daysWeekEl.firstChild)
-
-    }
-
-    //cтроим обычную неделю
-    else {
-        // while (variableDate.getDate() < this.lastDate.getDate()) {
-
+    function selectionsDay() {
         for (let i = 0; i < daysCount; i++) {
-
-
-            let dayEl = new Day(variableDate).render()
+            let dayAnotherMonth
+            if (firstDate.getMonth() == variableDate.getMonth()) { dayAnotherMonth = false }
+            else { dayAnotherMonth = true }
+            let dayEl = new Day(variableDate, dayAnotherMonth).render()
             variableDate.setDate(variableDate.getDate() + 1)
             daysWeekEl.appendChild(dayEl)
         }
-
-
-
-
     }
+
+    if (this.firstWeek == true) {
+        //воскресение
+        if (variableDate.getDay() === 0) {
+            // здесь находим дату ближайшего понедельника
+            variableDate.setDate(variableDate.getDate() - 6)
+            selectionsDay()
+        }
+
+        // не понедельник
+        else if (variableDate.getDay() != 1) {
+            //аналогично находим дату ближайшего понедельника
+            variableDate.setDate(variableDate.getDate() - variableDate.getDay() + 1)
+            selectionsDay()
+        }
+
+        //понедельник
+        else {
+            variableDate.setDate(variableDate.getDate() - 7)
+            selectionsDay()
+        }
+    }
+
+    //cтроим обычную неукороченную неделю или последнюю укороченную
+    else {
+        selectionsDay()
+    }
+
     return daysWeekEl;
 }
 
 wprt = null;
+
+
+
+
+
+
+
+
+
+
+
