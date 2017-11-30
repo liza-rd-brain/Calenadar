@@ -4,24 +4,30 @@ function Day(startDate, dayAnotherMonth) {
 }
 
 let dprt = Day.prototype;
-let abc = new Date()
+let systemDate = new Date()
+ 
+
+
+dprt.CLASS_NAME = "day"
+//все равно не понимаю, зачем обязательно в прототипе определять класс
+dprt.CLASS_NAME_ANOTHER_MONTH = " dayAnotherMonth"
+dprt.CLASS_NAME_WEEKENDDAY = " weekendDay"
+dprt.CLASS_NAME_CURRENTDAY = " currentDay"
 
 dprt.render = function () {
     let dayEl = document.createElement("div")
-    dayEl.className = "day"
+    dayEl.className = this.CLASS_NAME
     dayEl.innerHTML = (this.startDate.getDate() + "." + (this.startDate.getMonth() + 1) + "." + this.startDate.getFullYear())
-    
 
     if (this.dayAnotherMonth == true) {
-        dayEl.className = "dayAnotherMonth day"
-       }
-    else if(this.startDate.getDay()===0||this.startDate.getDay()===6) {
-        dayEl.className = "weekendDay day"
-       }
-    else if(this.startDate.getDate() == abc.getDate()&& this.startDate.getMonth() == abc.getMonth()&& this.startDate.getFullYear() == abc.getFullYear()) {
-       dayEl.className = "currentDay day"
-       }
-
+        dayEl.className += this.CLASS_NAME_ANOTHER_MONTH
+    }
+    else if (this.startDate.getDay() === 0 || this.startDate.getDay() === 6) {
+        dayEl.className += this.CLASS_NAME_WEEKENDDAY
+    }
+    else if (this.startDate.getDate() == systemDate.getDate() && this.startDate.getMonth() == systemDate.getMonth() && this.startDate.getFullYear() == systemDate.getFullYear()) {
+        dayEl.className += this.CLASS_NAME_CURRENTDAY
+    }
     return dayEl
 
 

@@ -6,7 +6,7 @@ function DaysGrid(startDate, weekCount, daysCount) {
 
 let dgprt = DaysGrid.prototype
 
-dgprt.CLASS_NAME = "daysGrid";
+dgprt.CLASS_NAME = "daysGrid"
 
 dgprt.render = function () {
     let lastDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + 1, 0)
@@ -14,7 +14,7 @@ dgprt.render = function () {
     let variableDate = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate())
 
     let daysGridEl = document.createElement("div");
-    daysGridEl.className = "daysGrid"
+    daysGridEl.className = this.CLASS_NAME
 
     //потому что пока не знаю как иначе
     //проверка: укороченная ли первая неделя-?!
@@ -35,8 +35,7 @@ dgprt.render = function () {
         // если рисуем первую неделю
         if (i === 1) {
 
-            let firstWeek = true
-            // мысль: переименовать firstWeek в firstWeek так будет понятнее в контексте
+            var firstWeek = true
             let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate).render()
             daysGridEl.appendChild(daysWeekEl)
             variableDate.setDate(variableDate.getDate() + cutStartDaysCount)

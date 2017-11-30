@@ -8,7 +8,21 @@ function DaysWeek(startDate, firstWeek, daysCount, firstDate, lastDate) {
 }
 let wprt = DaysWeek.prototype
 
+/*let variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())*/
+
 wprt.CLASS_NAME = "daysWeek"
+//выбор дней сделала псевдометодом
+// не работает
+/*_selectionsDay () = function () {
+    for (let i = 0; i < daysCount; i++) {
+        let dayAnotherMonth
+        if (this.firstDate.getMonth() == variableDate.getMonth()) { dayAnotherMonth = false }
+        else { dayAnotherMonth = true }
+        let dayEl = new Day(variableDate, dayAnotherMonth).render()
+        variableDate.setDate(variableDate.getDate() + 1)
+        daysWeekEl.appendChild(dayEl)
+    }
+}*/
 
 wprt.render = function () {
     let daysCount = this.daysCount
@@ -16,7 +30,7 @@ wprt.render = function () {
     let variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())
     let daysWeekEl = document.createElement("div")
 
-    daysWeekEl.className = "daysWeek"
+    daysWeekEl.className = this.CLASS_NAME
 
     function selectionsDay() {
         for (let i = 0; i < daysCount; i++) {
@@ -28,6 +42,7 @@ wprt.render = function () {
             daysWeekEl.appendChild(dayEl)
         }
     }
+
 
     if (this.firstWeek == true) {
         //воскресение
@@ -60,7 +75,6 @@ wprt.render = function () {
 }
 
 wprt = null;
-
 
 
 
