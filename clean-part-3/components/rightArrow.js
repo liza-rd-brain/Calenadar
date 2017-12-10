@@ -1,10 +1,17 @@
-function followingGrid() {
-    
-        daysGridEl = document.getElementsByClassName("daysGrid")
-        curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth() + 1, curentDate.getDate())
-        //curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth(), curentDate.getDate() + daysCount * weekCount)
-    
-        daysFollowingGridEl = new DaysGrid(curentDate).render()
-        grid.replaceChild(daysFollowingGridEl, daysGridEl[0])
-        сurrentMonth.innerHTML = nameMonth[curentDate.getMonth()]
-    }
+function RightArrow(navigatorEl) {
+    this.navigatorEl = navigatorEl
+}
+
+raprt = RightArrow.prototype
+raprt.CLASS_NAME = "rightArrow"
+
+raprt.render = function () {
+    let rightArrowEl = document.createElement("div")
+    rightArrowEl.className = this.CLASS_NAME
+    rightArrowEl.innerHTML = ">"
+    this.navigatorEl.appendChild(rightArrowEl)
+}
+
+
+raprt = null
+

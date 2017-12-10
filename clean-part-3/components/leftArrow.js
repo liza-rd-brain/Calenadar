@@ -1,10 +1,16 @@
-function previousGrid() {
-    
-        daysGridEl = document.getElementsByClassName("daysGrid")
-        curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth() - 1, curentDate.getDate())
-        //curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth(), curentDate.getDate() - daysCount * weekCount)
-    
-        daysPreviousGridEl = new DaysGrid(curentDate).render()
-        grid.replaceChild(daysPreviousGridEl, daysGridEl[0])
-        сurrentMonth.innerHTML = nameMonth[curentDate.getMonth()]
-    }
+function LeftArrow(navigatorEl) {
+    this.navigatorEl = navigatorEl
+}
+
+laprt = LeftArrow.prototype
+laprt.CLASS_NAME = "leftArrow"
+
+laprt.render = function () {
+    let leftArrowEl = document.createElement("div")
+    leftArrowEl.className = this.CLASS_NAME
+    leftArrowEl.innerHTML = "<"
+    this.navigatorEl.appendChild(leftArrowEl)
+}
+
+
+laprt = null

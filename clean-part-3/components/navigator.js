@@ -1,27 +1,23 @@
-let leftArrowClick = document.getElementById("leftArrow")
-leftArrowClick.onclick = previousGrid
+function Navigator(curentDate, calendarEl) {
+    this.curentDate = curentDate
+    this.calendarEl = calendarEl
+}
 
-let rightArrowClick = document.getElementById("rightArrow")
-rightArrowClick.onclick = followingGrid
+let nprt = Navigator.prototype
+nprt.CLASS_NAME = "navigator"
 
-/*function previousGrid() {
-    
-        daysGridEl = document.getElementsByClassName("daysGrid")
-        curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth() - 1, curentDate.getDate())
-        //curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth(), curentDate.getDate() - daysCount * weekCount)
-    
-        daysPreviousGridEl = new DaysGrid(curentDate).render()
-        grid.replaceChild(daysPreviousGridEl, daysGridEl[0])
-        сurrentMonth.innerHTML = nameMonth[curentDate.getMonth()]
-    }
-    
-    function followingGrid() {
-    
-        daysGridEl = document.getElementsByClassName("daysGrid")
-        curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth() + 1, curentDate.getDate())
-        //curentDate = new Date(curentDate.getFullYear(), curentDate.getMonth(), curentDate.getDate() + daysCount * weekCount)
-    
-        daysFollowingGridEl = new DaysGrid(curentDate).render()
-        grid.replaceChild(daysFollowingGridEl, daysGridEl[0])
-        сurrentMonth.innerHTML = nameMonth[curentDate.getMonth()]
-    }*/
+nprt.render = function () {
+
+    let navigatorEl = document.createElement("div")
+    navigatorEl.className = this.CLASS_NAME
+    this.calendarEl.appendChild(navigatorEl)
+
+    let leftArrowEl = new LeftArrow(navigatorEl).render()
+    let currentMonthEl = new CurrentMonth(curentDate, navigatorEl).render()
+    let rightArrowEl = new RightArrow(navigatorEl).render()
+
+}
+
+
+nprt = null
+

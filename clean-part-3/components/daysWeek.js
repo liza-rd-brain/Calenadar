@@ -29,7 +29,6 @@ wprt.render = function () {
     let firstDate = this.firstDate
     let variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())
     let daysWeekEl = document.createElement("div")
-
     daysWeekEl.className = this.CLASS_NAME
 
     function selectionsDay() {

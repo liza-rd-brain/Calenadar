@@ -1,11 +1,11 @@
-function DaysGrid(startDate, weekCount, daysCount) {
+function DaysGrid(startDate, weekCount, daysCount, gridEl) {
     this.startDate = startDate
     this.weekCount = weekCount
     this.daysCount = daysCount
+    this.gridEl = gridEl
 }
 
 let dgprt = DaysGrid.prototype
-
 dgprt.CLASS_NAME = "daysGrid"
 
 dgprt.render = function () {
@@ -15,6 +15,7 @@ dgprt.render = function () {
 
     let daysGridEl = document.createElement("div");
     daysGridEl.className = this.CLASS_NAME
+    this.gridEl.appendChild(daysGridEl)
 
     //потому что пока не знаю как иначе
     //проверка: укороченная ли первая неделя-?!

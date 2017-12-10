@@ -1,4 +1,5 @@
 function init() {
-    var calendar = new Calendar().render()
-    container.appendChild(calendar)
+    var calendarEl = new Calendar().render()
+    
 }
+window.onload = init
