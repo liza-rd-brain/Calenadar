@@ -4,8 +4,18 @@ function Day(startDate, dayAnotherMonth) {
 }
 
 let dprt = Day.prototype;
+
+
 let systemDate = new Date()
- 
+
+let updateSystemDate = function () {
+    systemDate = new Date()
+}
+  
+if (this.startDate!= systemDate){}
+
+setInterval(updateSystemDate,10000)
+
 
 
 dprt.CLASS_NAME = "day"

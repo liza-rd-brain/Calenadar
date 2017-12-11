@@ -1,5 +1,6 @@
-function RightArrow(navigatorEl) {
+function RightArrow(navigatorEl, followingGrid) {
     this.navigatorEl = navigatorEl
+    this.followingGrid = followingGrid
 }
 
 raprt = RightArrow.prototype
@@ -10,6 +11,7 @@ raprt.render = function () {
     rightArrowEl.className = this.CLASS_NAME
     rightArrowEl.innerHTML = ">"
     this.navigatorEl.appendChild(rightArrowEl)
+    rightArrowEl.onclick = this.followingGrid
 }
 
 
