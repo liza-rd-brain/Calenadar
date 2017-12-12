@@ -32,12 +32,14 @@ dprt.render = function () {
     if (this.dayAnotherMonth == true) {
         dayEl.className += this.CLASS_NAME_ANOTHER_MONTH
     }
-    else if (this.startDate.getDay() === 0 || this.startDate.getDay() === 6) {
-        dayEl.className += this.CLASS_NAME_WEEKENDDAY
-    }
     else if (this.startDate.getDate() == systemDate.getDate() && this.startDate.getMonth() == systemDate.getMonth() && this.startDate.getFullYear() == systemDate.getFullYear()) {
         dayEl.className += this.CLASS_NAME_CURRENTDAY
     }
+
+    else if (this.startDate.getDay() === 0 || this.startDate.getDay() === 6) {
+        dayEl.className += this.CLASS_NAME_WEEKENDDAY
+    }
+    
     return dayEl
 
 

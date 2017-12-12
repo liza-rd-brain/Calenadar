@@ -7,8 +7,9 @@ cprt.CLASS_NAME = "calendar"
 // как понять, какие переменные определять внутри render-а?!
 //от startDate или curentDate нужно//можно избавиться?!?!?
 /*var startDate = new Date()
-var curentDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate())*/
+var curentDate = new Date(startDate.getFullYear(), startDate.getMonth()-1, startDate.getDate())*/
 var curentDate = new Date()
+
 
 var daysCount = 7;
 var weekCount = 6;
