@@ -15,13 +15,5 @@ laprt.render = function () {
     //обработчик щелчка
     leftArrowEl.onclick = this.previousGrid
 
-    /*function previousGridTest() {
-        alert("You can do it!")
-    }*/
 }
-
-/*let leftArrowClick = document.getElementById("leftArrow")
-leftArrowClick.onclick = previousGrid*/
-
-
 laprt = null

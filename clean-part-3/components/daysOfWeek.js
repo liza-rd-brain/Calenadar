@@ -15,8 +15,6 @@ dowprt.render = function () {
         let nameOfDayEl = new NameOfDayEl(daysOfWeekEl,i).render()
 
     }
-
-
 }
 dowprt = null
 
