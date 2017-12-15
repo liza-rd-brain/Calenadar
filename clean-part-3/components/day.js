@@ -1,23 +1,13 @@
-function Day(startDate, dayAnotherMonth) {
+function Day(startDate, dayAnotherMonth, systemDate) {
     this.startDate = startDate
     this.dayAnotherMonth = dayAnotherMonth
+    this.systemDate = systemDate
 }
 
 let dprt = Day.prototype;
 
 
-let systemDate = new Date()
-
-let updateSystemDate = function () {
-    systemDate = new Date()
-}
-  
-if (this.startDate!= systemDate){}
-
-setInterval(updateSystemDate,10000)
-
-
-
+/*let systemDate = new Date()*/
 dprt.CLASS_NAME = "day"
 //все равно не понимаю, зачем обязательно в прототипе определять класс
 dprt.CLASS_NAME_ANOTHER_MONTH = " dayAnotherMonth"
@@ -32,14 +22,14 @@ dprt.render = function () {
     if (this.dayAnotherMonth == true) {
         dayEl.className += this.CLASS_NAME_ANOTHER_MONTH
     }
-    else if (this.startDate.getDate() == systemDate.getDate() && this.startDate.getMonth() == systemDate.getMonth() && this.startDate.getFullYear() == systemDate.getFullYear()) {
+    else if (this.startDate.getDate() == this.systemDate.getDate() && this.startDate.getMonth() == this.systemDate.getMonth() && this.startDate.getFullYear() == this.systemDate.getFullYear()) {
         dayEl.className += this.CLASS_NAME_CURRENTDAY
     }
 
     else if (this.startDate.getDay() === 0 || this.startDate.getDay() === 6) {
         dayEl.className += this.CLASS_NAME_WEEKENDDAY
     }
-    
+
     return dayEl
 
 

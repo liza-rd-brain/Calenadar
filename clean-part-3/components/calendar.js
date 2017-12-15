@@ -7,6 +7,18 @@ cprt.CLASS_NAME = "calendar"
 /*var startDate = new Date()
 var curentDate = new Date(startDate.getFullYear(), startDate.getMonth()-1, startDate.getDate())*/
 var curentDate = new Date()
+//в принципе при обновлении даты systemDate мне не понадобился
+//зато при объявлении systemDate здесь, решилась другая проблема:
+//раньше текущий выходной  день подсвечивался красным
+//после изменения места объявления переменной стал зеленым (протестировано)
+let systemDate = new Date()
+
+let updateSystemDate = function () {
+    if (new Date().getHours() === 00 && new Date().getMinutes() === 00) {
+        document.getElementById("container").removeChild(document.getElementsByClassName("calendar")[0])
+        }
+}
+setInterval(updateSystemDate, 10000)
 
 var daysCount = 7;
 var weekCount = 6;
@@ -38,7 +50,12 @@ cprt.render = function () {
     calendarEl.className = this.CLASS_NAME
     container.appendChild(calendarEl)
     let navigatorEl = new Navigator(curentDate, calendarEl, this.previousGrid, this.followingGrid).render()
-    let gridEl = new Grid(curentDate, weekCount, daysCount, calendarEl).render()
+    let gridEl = new Grid(curentDate, systemDate, weekCount, daysCount, calendarEl).render()
 }
+
+//обновление systemDate
+
+
+
 
 cprt = null

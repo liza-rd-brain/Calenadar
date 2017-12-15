@@ -1,5 +1,6 @@
-function DaysGrid(startDate, weekCount, daysCount, gridEl) {
+function DaysGrid(startDate, systemDate, weekCount, daysCount, gridEl) {
     this.startDate = startDate
+    this.systemDate = systemDate
     this.weekCount = weekCount
     this.daysCount = daysCount
     this.gridEl = gridEl
@@ -37,7 +38,7 @@ dgprt.render = function () {
         if (i === 1) {
 
             var firstWeek = true
-            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate).render()
+            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate,systemDate).render()
             daysGridEl.appendChild(daysWeekEl)
             variableDate.setDate(variableDate.getDate() + cutStartDaysCount)
         }
@@ -45,7 +46,7 @@ dgprt.render = function () {
         else {
 
             let firstWeek = false
-            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate).render()
+            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate,systemDate).render()
             daysGridEl.appendChild(daysWeekEl)
             variableDate.setDate(variableDate.getDate() + daysCount)
         }

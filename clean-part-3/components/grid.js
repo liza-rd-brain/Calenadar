@@ -1,5 +1,6 @@
-function Grid(curentDate, weekCount, daysCount, calendarEl) {
+function Grid(curentDate, systemDate, weekCount, daysCount, calendarEl) {
     this.curentDate = curentDate
+    this.systemDate = systemDate
     this.weekCount = weekCount
     this.daysCount = daysCount
     this.calendarEl = calendarEl
@@ -14,7 +15,7 @@ gprt.render = function () {
     this.calendarEl.appendChild(gridEl)
 
     let daysOfWeekEl = new DaysOfWeek(daysCount, gridEl).render()
-    let daysGridEl = new DaysGrid(curentDate, weekCount, daysCount, gridEl).render()
+    let daysGridEl = new DaysGrid(curentDate,systemDate, weekCount, daysCount, gridEl).render()
 
 }
 
