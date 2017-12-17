@@ -14,9 +14,14 @@ var curentDate = new Date()
 let systemDate = new Date()
 
 let updateSystemDate = function () {
-    if (new Date().getHours() === 00 && new Date().getMinutes() === 00) {
+    if (new Date().getHours() === 16 && new Date().getMinutes() === 17) {
         document.getElementById("container").removeChild(document.getElementsByClassName("calendar")[0])
+        //по новой рисую календарик
+        new Calendar().render()
+        
+        
         }
+
 }
 setInterval(updateSystemDate, 10000)
 
@@ -52,10 +57,5 @@ cprt.render = function () {
     let navigatorEl = new Navigator(curentDate, calendarEl, this.previousGrid, this.followingGrid).render()
     let gridEl = new Grid(curentDate, systemDate, weekCount, daysCount, calendarEl).render()
 }
-
-//обновление systemDate
-
-
-
 
 cprt = null
