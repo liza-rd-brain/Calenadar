@@ -12,7 +12,9 @@ cmprt.render = function () {
     currentMonthEl.className = this.CLASS_NAME
     currentMonthEl.innerHTML = nameMonth[this.curentDate.getMonth()]
 
-    document.getElementsByClassName("navigator")[0].insertBefore(currentMonthEl,document.getElementsByClassName("rightArrow")[0])
+    this.navigatorEl.appendChild(currentMonthEl)
+
+    /*this.navigatorEl.insertBefore(currentMonthEl,document.getElementsByClassName("rightArrow")[0])*/
    
 }
 

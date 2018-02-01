@@ -1,6 +1,6 @@
-function LeftArrow(navigatorEl, previousGrid) {
+function LeftArrow(navigatorEl, updateCalendar) {
     this.navigatorEl = navigatorEl
-    this.previousGrid = previousGrid
+    this.updateCalendar = updateCalendar
 }
 
 laprt = LeftArrow.prototype
@@ -9,11 +9,12 @@ laprt.CLASS_NAME = "leftArrow"
 laprt.render = function () {
     let leftArrowEl = document.createElement("div")
     leftArrowEl.className = this.CLASS_NAME
-    leftArrowEl.innerHTML = "<"
-    
+    leftArrowEl.innerHTML = "<"  
+    leftArrowEl.data = "left"  
     this.navigatorEl.appendChild(leftArrowEl)
-    //обработчик щелчка
-    leftArrowEl.onclick = this.previousGrid
+    leftArrowEl.addEventListener("click", this.updateCalendar )
 
+    /*leftArrowEl.onclick =this.updateCalendar */
+    /*$(".leftArrow").click(this.updateCalendar)*/
 }
 laprt = null

@@ -13,7 +13,6 @@ dowprt.render = function () {
     let i
     for (i = 0; i < daysCount; i++) {
         let nameOfDayEl = new NameOfDayEl(daysOfWeekEl,i).render()
-
     }
 }
 dowprt = null

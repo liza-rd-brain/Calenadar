@@ -16,7 +16,7 @@ gprt.render = function () {
 
     let daysOfWeekEl = new DaysOfWeek(daysCount, gridEl).render()
     let daysGridEl = new DaysGrid(curentDate,systemDate, weekCount, daysCount, gridEl).render()
-
+    return gridEl
 }
 
 gprt = null

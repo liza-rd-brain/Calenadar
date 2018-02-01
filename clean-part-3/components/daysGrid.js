@@ -16,7 +16,7 @@ dgprt.render = function () {
 
     let daysGridEl = document.createElement("div");
     daysGridEl.className = this.CLASS_NAME
-    document.getElementsByClassName("grid")[0].appendChild(daysGridEl)
+    this.gridEl.appendChild(daysGridEl)
 
     //потому что пока не знаю как иначе
     //проверка: укороченная ли первая неделя-?!

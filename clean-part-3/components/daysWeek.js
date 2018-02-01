@@ -22,7 +22,8 @@ wprt._selectionsDay = function (variableDate, daysWeekEl) {
     }
 }
 
-wprt.render = function () {
+wprt.render = function () 
+{
     let daysCount = this.daysCount
     let firstDate = this.firstDate
     let variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())

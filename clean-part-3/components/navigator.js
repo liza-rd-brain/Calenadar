@@ -1,25 +1,24 @@
-function Navigator(curentDate, calendarEl, previousGrid, followingGrid) {
+function Navigator(curentDate, calendarEl, updateCalendar) {
     this.curentDate = curentDate
     this.calendarEl = calendarEl
-    this.previousGrid = previousGrid
-    this.followingGrid = followingGrid
-
+    this.updateCalendar = updateCalendar
 }
 
 let nprt = Navigator.prototype
 nprt.CLASS_NAME = "navigator"
 
 nprt.render = function () {
-
     let navigatorEl = document.createElement("div")
     navigatorEl.className = this.CLASS_NAME
-    document.getElementsByClassName("calendar")[0].appendChild(navigatorEl)
-
-    let leftArrowEl = new LeftArrow(navigatorEl, this.previousGrid).render()
+    this.calendarEl.appendChild(navigatorEl)
+    
+    let leftArrowEl = new LeftArrow(navigatorEl, this.updateCalendar).render()
     let currentMonthEl = new CurrentMonth(curentDate, navigatorEl).render()
-    let rightArrowEl = new RightArrow(navigatorEl,this.followingGrid).render()
-
+    let rightArrowEl = new RightArrow(navigatorEl, this.updateCalendar).render()
+    return navigatorEl
 }
+
+
 
 nprt = null
 

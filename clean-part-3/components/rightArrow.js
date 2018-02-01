@@ -1,6 +1,6 @@
-function RightArrow(navigatorEl, followingGrid) {
+function RightArrow(navigatorEl, updateCalendar) {
     this.navigatorEl = navigatorEl
-    this.followingGrid = followingGrid
+    this.updateCalendar = updateCalendar
 }
 
 raprt = RightArrow.prototype
@@ -10,10 +10,13 @@ raprt.render = function () {
     let rightArrowEl = document.createElement("div")
     rightArrowEl.className = this.CLASS_NAME
     rightArrowEl.innerHTML = ">"
+    rightArrowEl.data = "right"
     this.navigatorEl.appendChild(rightArrowEl)
-    rightArrowEl.onclick = this.followingGrid
+    rightArrowEl.addEventListener("click", this.updateCalendar )
+
+    //обработала щелчок ч-з jQuery по классу объекта
+    /*$(".rightArrow").click(this.updateCalendar)*/
 }
-
-
 raprt = null
+
 
