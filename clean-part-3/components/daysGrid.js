@@ -38,17 +38,17 @@ dgprt.render = function () {
         if (i === 1) {
 
             var firstWeek = true
-            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate,systemDate).render()
+            let daysWeekEl = new DaysWeek(variableDate, firstWeek, this.daysCount , firstDate, lastDate,this.startDate, this.systemDate).render()
             daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + cutStartDaysCount)
+            variableDate.setDate(variableDate.getDate())
         }
         // если мы рисуем рядовую полную неделю или последнюю неделю
         else {
 
             let firstWeek = false
-            let daysWeekEl = new DaysWeek(variableDate, firstWeek, daysCount, firstDate, lastDate,systemDate).render()
+            let daysWeekEl = new DaysWeek(variableDate, firstWeek, this.daysCount , firstDate, lastDate,this.startDate,this.systemDate).render()
             daysGridEl.appendChild(daysWeekEl)
-            variableDate.setDate(variableDate.getDate() + daysCount)
+            variableDate.setDate(variableDate.getDate())
         }
     }
     return daysGridEl;

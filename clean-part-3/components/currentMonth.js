@@ -1,5 +1,5 @@
-function CurrentMonth(curentDate, navigatorEl) {
-    this.curentDate = curentDate
+function CurrentMonth(startDate, navigatorEl) {
+    this.startDate = startDate
     this.navigatorEl = navigatorEl
 }
 cmprt = CurrentMonth.prototype
@@ -10,7 +10,7 @@ let nameMonth = ["Январь", "Февраль", "Март", "Апрель", "
 cmprt.render = function () {
     let currentMonthEl = document.createElement("div")
     currentMonthEl.className = this.CLASS_NAME
-    currentMonthEl.innerHTML = nameMonth[this.curentDate.getMonth()]
+    currentMonthEl.innerHTML = nameMonth[this.startDate.getMonth()]
 
     this.navigatorEl.appendChild(currentMonthEl)
 

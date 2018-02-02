@@ -1,5 +1,5 @@
-function Navigator(curentDate, calendarEl, updateCalendar) {
-    this.curentDate = curentDate
+function Navigator(startDate, calendarEl, updateCalendar) {
+    this.startDate = startDate
     this.calendarEl = calendarEl
     this.updateCalendar = updateCalendar
 }
@@ -13,7 +13,7 @@ nprt.render = function () {
     this.calendarEl.appendChild(navigatorEl)
     
     let leftArrowEl = new LeftArrow(navigatorEl, this.updateCalendar).render()
-    let currentMonthEl = new CurrentMonth(curentDate, navigatorEl).render()
+    let currentMonthEl = new CurrentMonth(this.startDate, navigatorEl).render()
     let rightArrowEl = new RightArrow(navigatorEl, this.updateCalendar).render()
     return navigatorEl
 }
