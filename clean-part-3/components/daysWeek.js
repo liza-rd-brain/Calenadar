@@ -12,8 +12,8 @@ let wprt = DaysWeek.prototype
 
 wprt.CLASS_NAME = "daysWeek"
 
-wprt._selectionsDay = function (/*this.variableDate,*/ daysWeekEl) {
-    for (let i = 0; i < daysCount; i++) {
+wprt._selectionsDay = function (daysWeekEl) {
+    for (let i = 0; i < this.daysCount; i++) {
         let dayAnotherMonth
         if (this.firstDate.getMonth() == this.variableDate.getMonth()) { dayAnotherMonth = false }
         else { dayAnotherMonth = true }
@@ -26,7 +26,6 @@ wprt._selectionsDay = function (/*this.variableDate,*/ daysWeekEl) {
 wprt.render = function () {
     let daysCount = this.daysCount
     let firstDate = this.firstDate
-    /*let this.variableDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())*/
     let daysWeekEl = document.createElement("div")
     daysWeekEl.className = this.CLASS_NAME
 
@@ -37,14 +36,14 @@ wprt.render = function () {
         if (this.variableDate.getDay() === 0) {
             // здесь находим дату ближайшего понедельника
             this.variableDate.setDate(this.variableDate.getDate() - 6)
-            this._selectionsDay(/*this.variableDate,*/ daysWeekEl)
+            this._selectionsDay(daysWeekEl)
         }
 
         // не понедельник
         else if (this.variableDate.getDay() != 1) {
             //аналогично находим дату ближайшего понедельника
             this.variableDate.setDate(this.variableDate.getDate() - this.variableDate.getDay() + 1)
-            this._selectionsDay(/*this.variableDate,*/  daysWeekEl)
+            this._selectionsDay(daysWeekEl)
 
         }
 

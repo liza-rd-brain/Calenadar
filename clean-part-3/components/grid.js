@@ -14,7 +14,7 @@ gprt.render = function () {
     gridEl.className = this.CLASS_NAME
     this.calendarEl.appendChild(gridEl)
 
-    let daysOfWeekEl = new DaysOfWeek(daysCount, gridEl).render()
+    let daysOfWeekEl = new DaysOfWeek(this.daysCount, gridEl).render()
     let daysGridEl = new DaysGrid(this.startDate, this.systemDate, this.weekCount, this.daysCount , gridEl).render()
     return gridEl
 }

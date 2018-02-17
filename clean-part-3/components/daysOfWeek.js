@@ -11,7 +11,7 @@ dowprt.render = function () {
     daysOfWeekEl.className = this.CLASS_NAME
     this.gridEl.appendChild(daysOfWeekEl)
     let i
-    for (i = 0; i < daysCount; i++) {
+    for (i = 0; i < this.daysCount; i++) {
         let nameOfDayEl = new NameOfDayEl(daysOfWeekEl,i).render()
     }
 }

@@ -25,14 +25,14 @@ dgprt.render = function () {
         cutStartDaysCount = 1
     }
     else if (firstDate.getDay() != 1) {
-        cutStartDaysCount = daysCount - firstDate.getDay() + 1
+        cutStartDaysCount = this.daysCount - firstDate.getDay() + 1
     }
     else {
         cutStartDaysCount = 0
     }
 
     //рисуем недели, начинаем с первой недели
-    for (i = 1; i <= weekCount; i++) {
+    for (i = 1; i <= this.weekCount; i++) {
 
         // если рисуем первую неделю
         if (i === 1) {
